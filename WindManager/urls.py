@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
+'''from django.contrib import admin
 from django.conf.urls import url
 from django.contrib.auth import views as auth_views
 #from turbines.views import BaseView, LoginView, TurbinesView#, include
@@ -26,9 +26,22 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url('', TemplateView.as_view(template_name='turbines/home.html'), name='home'),
 ]
-'''
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),#, include('django.contrib.auth.urls')),
     path('', TemplateView.as_view(template_name='turbines/home.html'), name='home'), # new
 ]'''
+# WindManager/urls.py
+from django.contrib import admin
+from django.urls import include, path
+from django.conf.urls import url
+from django.views.generic.base import TemplateView
+
+urlpatterns = [
+    #path('', include('pages.urls')),
+    path('users/', include('users.urls')), # new
+    path('users/', include('django.contrib.auth.urls')), # new
+    path('admin/', admin.site.urls),
+    url('', TemplateView.as_view(template_name='turbines/home.html'), name='home'),
+]

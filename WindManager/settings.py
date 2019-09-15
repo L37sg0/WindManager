@@ -40,10 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
-    'boats',
+    #'rest_framework',
+    #'boats',
     'turbines',
+    'users',
 ]
+
+AUTH_USER_MODEL = 'users.CustomUser' # new
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -73,8 +76,8 @@ TEMPLATES = [
     },
 ]
 
-LOGIN_REDIRECT_URL = '//'
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
 
 WSGI_APPLICATION = 'WindManager.wsgi.application'
 
@@ -92,8 +95,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'winddb',
-        'USER': 'manager',
-        'PASSWORD': 'Turb0W1ndPo#er',
+        'USER': 'manager',#windman
+        'PASSWORD': 'Turb0W1ndPo#er',#w1ndM@n
         'HOST': 'localhost',
         'PORT': '',
     }
